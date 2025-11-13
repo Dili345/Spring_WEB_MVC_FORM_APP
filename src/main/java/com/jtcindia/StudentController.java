@@ -17,19 +17,16 @@ import com.jtcindia.repo.StudentRepository;
 
 @Controller
 public class StudentController {
-	
+
 	@Autowired
 	private StudentRepository repo;
-	
-	
-	
 
 	// method to load Student form
 	@GetMapping("/")
 	public String loadForm(Model model) {
 
 		LoadformDate(model);
- 
+
 		return "index";
 	}
 
@@ -61,17 +58,16 @@ public class StudentController {
 
 	@PostMapping("/save")
 	public String handleSubmit(Student s, Model model) {
-	 
 
 		// Logic to Save
-		
+
 		StudentEntity entity = new StudentEntity();
-		
-		//copy date from binding obj. to entity obj.
-		
+
+		// copy date from binding obj. to entity obj.
+
 		BeanUtils.copyProperties(s, entity);
 		entity.setTimings(Arrays.toString(s.getTimings()));
-		
+
 		repo.save(entity);
 
 		model.addAttribute("mssg", "Student Saved");
@@ -82,6 +78,19 @@ public class StudentController {
 
 	}
 
-	// method to display saaved a students data
+	// method to display saved a students data
+
+	@GetMapping("/viewStudents")
+	public String getStudentsData(Model model) {
+
+		// logic to fetch and send students data
+		List<StudentEntity> studentList = repo.findAll();
+
+		// Send data to UI using model.addAttribute(-,-);
+
+		model.addAttribute("students", studentList);
+
+		return "data";
+	}
 
 }

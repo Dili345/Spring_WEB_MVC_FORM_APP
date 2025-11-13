@@ -9,9 +9,9 @@
 </head>
 <body>
 	<h3>Student Registration Form</h3>
-	
+
 	<font color='green'>${mssg}</font>
-	
+
 	<form:form action="save" modelAttribute="student" method="POST">
 		<table>
 			<tr>
@@ -25,8 +25,8 @@
 			</tr>
 			<tr>
 				<td>Gender:</td>
-				<td><form:radiobutton path="gender"  value="male"/> Male <form:radiobutton
-						path="gender"  value="female"/> Fe-male</td>
+				<td><form:radiobutton path="gender" value="male" /> Male <form:radiobutton
+						path="gender" value="female" /> Fe-male</td>
 			</tr>
 
 
@@ -42,13 +42,10 @@
 				<td>Timings:</td>
 				<td><form:checkboxes items="${timeings}" path="timings" /></td>
 			</tr>
-			
+
 			<tr>
 				<td></td>
-				<td>
-				 
-				 <input type="submit" value="Save">
-				 	</td>
+				<td><input type="submit" value="Save"></td>
 			</tr>
 
 
@@ -62,6 +59,25 @@
 
 
 	</form:form>
+	
+	
+	
+	
+<a href="viewStudents">View Students</a>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </body>
 </html>
